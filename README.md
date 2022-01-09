@@ -13,3 +13,23 @@ To start development environment simply run `docker-compose up -d app` which wil
 There is also a production environment available. Run `docker-compose -f docker-compose.prod.yml up -d app`.
 ## Overview
 
+
+### Operational Directory Structure
+#### Infrastructure as a Code directory
+####  Docker Directory
+This directory contains Dockerfile, s6-overlay scripts, and directories which contains services configurations such as fpm and nginx per env.
+##### Dockerfile
+Dockerfile follows multi-stage build practice and follows layering good practices.  
+###### Stages organization
+
+
+##### S6-overlay
+##### Env specific configurations
+
+#### Application Directory
+
+### Application Directory Structure
+#### Explicit Architecture
+[![Explicit Architecture](https://docs.google.com/drawings/d/e/2PACX-1vQ5ps72uaZcEJzwnJbPhzUfEeBbN6CJ04j7hl2i3K2HHatNcsoyG2tgX2vnrN5xxDKLp5Jm5bzzmZdv/pub?w=960&amp;h=657)][2]
+
+[2]: https://docs.google.com/drawings/d/1E_hx5B4czRVFVhGJbrbPDlb_JFxJC8fYB86OMzZuAhg/edit?usp=sharing
