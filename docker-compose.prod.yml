@@ -6,9 +6,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
-      target: local
+      target: prod
+    environment:
+      APP_ENV: prod
     ports:
       - '1805:80'
-    volumes:
-      - ./app/src:/var/www/app/src
-      - ./app/.env.local:/var/www/app/.env.local
