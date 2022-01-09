@@ -11,4 +11,5 @@ services:
       - '1805:80'
     volumes:
       - ./app/src:/var/www/app/src
+      - ./app/config:/var/www/app/config
       - ./app/.env.local:/var/www/app/.env.local

@@ -17,7 +17,7 @@ ENV S6_SYNC_DISKS=1;
 RUN apk update && \
     apk add nginx=1.20.2-r0
 
-# clean up any deafault configurationS
+# clean up any default configuration
 RUN rm /etc/nginx/http.d/*
 
 FROM base as composer-base
