@@ -12,7 +12,11 @@ I am running:
 To start development environment simply run `docker-compose up -d app` which will start main service in background (detached mode). Service should be available at `localhost:1805`.  
 There is also a production environment available. Run `docker-compose -f docker-compose.prod.yml up -d app`.
 ## Overview
-
+Project is based off of official (offofoff :wink: ) php:8.0.14-fpm-alpine3.15 image and extended with [s6-overlay](https://github.com/just-containers/s6-overlay) project along with Nginx for apline.
+I decided to include Nginx inside app container which basically broke one process per container rule. This is done mostly out of convenience. There is a basic argument that services based on this project would be deployed on a cloud using orchestration such as Kubernetes.
+Load balancing would be done by some other solution and communicate over HTTP - not over FastCGI. PHP services would not be load balanced by Nginx. In this scenario Nginx could be deployed as Sidecar to main App, but it is more convenient to run two processes.  
+Downside to this solution is that Nginx and App are limited to same amount of resources and could choke each other, but this will not be a problem on local environment.  
+S6-overlay covers fixes to permissions, offers a way to easily run startup scripts such as fixtures and migrations. This is also a great tool to fix permissions inside a container.
 
 ### Operational Directory Structure
 #### Infrastructure as a Code directory
