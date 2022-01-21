@@ -28,7 +28,7 @@ FROM base as local
 # copy startup scripts
 COPY docker/s6-overlay/local/etc /etc
 
-COPY docker/local/nginx/servis.conf /etc/nginx/http.d
+COPY docker/nginx/local/servis.conf /etc/nginx/http.d
 COPY app/ /var/www/app
 
 ENTRYPOINT ["/init"]
@@ -36,7 +36,7 @@ ENTRYPOINT ["/init"]
 FROM base as prod
 # copy startup scripts
 COPY docker/s6-overlay/production/etc /etc
-COPY docker/production/nginx/servis.conf /etc/nginx/http.d
+COPY docker/nginx/production/servis.conf /etc/nginx/http.d
 
 COPY --from=prod-dependencies /var/www/app/vendor /var/www/app/vendor
 
