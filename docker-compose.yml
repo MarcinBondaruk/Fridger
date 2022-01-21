@@ -3,6 +3,7 @@ version: '3.8'
 services:
   fridger-main:
     container_name: fridger-main
+    restart: unless-stopped
     build:
       context: .
       dockerfile: docker/Dockerfile
@@ -15,3 +16,23 @@ services:
       - ./app/vendor:/var/www/app/vendor
       - ./app/var:/var/www/app/var
       - ./app/.env:/var/www/app/.env
+      - ./app/composer.json:/var/www/app/composer.json
+      - ./app/composer.lock:/var/www/app/composer.lock
+      - ./app/symfony.lock:/var/www/app/symfony.lock
+
+  fridger-db:
+    container_name: fridger-db
+    image: postgres:14
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fridger
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - fridger-db-storage:/var/lib/postgresql/data
+
+volumes:
+  fridger-db-storage:
+    driver: local

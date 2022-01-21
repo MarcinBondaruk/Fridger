@@ -28,6 +28,6 @@ class CreateUserController extends AbstractController
             )
         );
 
-        return new JsonResponse(status: Response::HTTP_OK, json: true);
+        return new JsonResponse(data: '', status: Response::HTTP_OK, json: true);
     }
 }
