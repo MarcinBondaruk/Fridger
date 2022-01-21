@@ -12,4 +12,6 @@ services:
     volumes:
       - ./app/src:/var/www/app/src
       - ./app/config:/var/www/app/config
+      - ./app/vendor:/var/www/app/vendor
+      - ./app/var:/var/www/app/var
       - ./app/.env.local:/var/www/app/.env.local
