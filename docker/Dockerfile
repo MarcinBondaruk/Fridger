@@ -25,15 +25,23 @@ FROM composer-base as prod-dependencies
 RUN php composer.phar install --working-dir=/var/www/app --no-dev --prefer-dist --no-scripts --no-progress --optimize-autoloader
 
 FROM base as local
+ENV APP_ENV dev
+
+RUN set -eux; \
+    mkdir /var/www/app/var;
+
 # copy startup scripts
+COPY --from=composer-base /var/www/app/composer.phar /var/www/app
 COPY docker/s6-overlay/local/etc /etc
+COPY docker/php/local/symfony.ini $PHP_INI_DIR/conf.d/symfony.ini
 
 COPY docker/nginx/local/servis.conf /etc/nginx/http.d
-COPY app/ /var/www/app
+COPY ./app /var/www/app
 
 ENTRYPOINT ["/init"]
 
 FROM base as prod
+ENV APP_ENV prod
 # copy startup scripts
 COPY docker/s6-overlay/production/etc /etc
 COPY docker/nginx/production/servis.conf /etc/nginx/http.d
