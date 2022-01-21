@@ -14,3 +14,4 @@ services:
       - ./app/config:/var/www/app/config
       - ./app/vendor:/var/www/app/vendor
       - ./app/var:/var/www/app/var
+      - ./app/.env:/var/www/app/.env
