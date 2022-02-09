@@ -3,12 +3,14 @@ declare(strict_types=1);
 
 namespace App\Core\Component\UserManagement\Application\Write\Command;
 
-class CreateUser
+use App\Core\Port\Transport\CommandBus\Command;
+
+class CreateUser implements Command
 {
     public function __construct(
         private string $username,
         private string $email,
-        private string $password
+        private string $plainPassword
     ) {}
 
     /**
@@ -30,8 +32,8 @@ class CreateUser
     /**
      * @return string
      */
-    public function password(): string
+    public function plainPassword(): string
     {
-        return $this->password;
+        return $this->plainPassword;
     }
 }

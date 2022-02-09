@@ -4,17 +4,25 @@ declare(strict_types=1);
 namespace App\Core\Component\UserManagement\Domain\Entity;
 
 use Assert\Assertion;
+use Assert\AssertionFailedException as AssertionFailedExceptionAlias;
 
 class User
 {
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+    public const ROLE_USER = 'ROLE_REGISTERED_USER';
+
+    /**
+     * @var string[]
+     */
+    private array $roles = [];
+
     public function __construct(
         private string $id,
         private string $username,
         private string $email,
         private string $passwordHash
     ) {
-        $this->setEmail($email);
-        $this->setUsername($this->username);
+        $this->setBasicRole();
     }
 
     /**
@@ -41,16 +49,20 @@ class User
         return $this->passwordHash;
     }
 
-    private function setEmail(string $email): void
+    public function roles(): array
     {
-        Assertion::email($email);
-        $this->email = $email;
+        return $this->roles;
     }
 
-    private function setUsername(string $username): void
+    /**
+     * @param string $role
+     * @return void
+     * @throws AssertionFailedExceptionAlias
+     */
+    public function addRole(string $role): void
     {
-        Assertion::notEmpty($username);
-        $this->username = $username;
+        Assertion::notInArray($role, $this->roles());
+        $this->roles[] = $role;
     }
 
     /**
@@ -59,5 +71,10 @@ class User
     public function id(): string
     {
         return $this->id;
+    }
+
+    private function setBasicRole()
+    {
+        $this->addRole(static::ROLE_USER);
     }
 }
