@@ -16,7 +16,7 @@ class DoctrineUserRepository implements UserRepository
 
     public function add(User $user): void
     {
-        // TODO: Implement persist() method.
+        $this->entityManager->persist($user);
     }
 
     public function findOneByUsername(string $username): User

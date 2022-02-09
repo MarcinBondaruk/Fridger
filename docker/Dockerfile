@@ -12,7 +12,9 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2;
 ENV S6_SYNC_DISKS=1;
 
 RUN apk update && \
-    apk add nginx=1.20.2-r0
+    apk add nginx=1.20.2-r0 && \
+    apk add postgresql-dev && \
+    docker-php-ext-install pdo_pgsql;
 
 # clean up any default configuration
 RUN rm /etc/nginx/http.d/*
