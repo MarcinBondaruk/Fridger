@@ -19,6 +19,11 @@ class DoctrineIngredientRepository implements IIngredientRepository
         $this->entityManager->persist($ingredient);
     }
 
+    public function findAll(): array
+    {
+        return $this->entityManager->getRepository(Ingredient::class)->findAll();
+    }
+
     public function findOneByValue(string $value): Ingredient
     {
         $result = $this->entityManager->getRepository(Ingredient::class)

@@ -16,8 +16,7 @@ class RetrieveUsersQueryHandler
 
     public function __invoke(RetrieveUsersQuery $query): RetrieveUsersQueryResult
     {
-        $users = $this->userRepository->findAll();
-        return $this->mapToResult($users);
+        return $this->mapToResult($this->userRepository->findAll());
     }
 
     /**

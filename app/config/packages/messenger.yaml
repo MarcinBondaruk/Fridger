@@ -7,12 +7,14 @@ framework:
             # https://symfony.com/doc/current/messenger.html#transport-configuration
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
-             sync: 'sync://'
+             command: 'sync://'
+             query: 'sync://'
 
         routing:
             # Route your messages to the transports
-             'App\Core\Component\UserManagement\Application\Write\Command\CreateUserCommand': sync
-             'App\Core\Component\UserManagement\Application\Write\Command\CreateAdminCommand': sync
-             'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUsersQuery': sync
-             'App\Core\Component\CookingBook\Application\Write\Command\CreateTagCommand\CreateTagCommand': sync
-             'App\Core\Component\CookingBook\Application\Write\Command\CreateIngredientCommand\CreateIngredientCommand': sync
+             'App\Core\Component\UserManagement\Application\Write\Command\CreateUserCommand': command
+             'App\Core\Component\UserManagement\Application\Write\Command\CreateAdminCommand': command
+             'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUsersQuery': query
+             'App\Core\Component\CookingBook\Application\Write\Command\CreateTagCommand\CreateTagCommand': command
+             'App\Core\Component\CookingBook\Application\Write\Command\CreateIngredientCommand\CreateIngredientCommand': command
+             'App\Core\Component\CookingBook\Application\Read\Query\RetrieveIngredientsQuery\RetrieveIngredientsQuery': query

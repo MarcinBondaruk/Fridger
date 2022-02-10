@@ -16,4 +16,9 @@ interface IIngredientRepository
      * @throws EmptyQueryResultException
      */
     public function findOneByValue(string $value): Ingredient;
+
+    /**
+     * @return Ingredient[]
+     */
+    public function findAll(): array;
 }
