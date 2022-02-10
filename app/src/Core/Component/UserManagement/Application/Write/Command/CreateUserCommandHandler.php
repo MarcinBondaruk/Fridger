@@ -22,7 +22,8 @@ class CreateUserCommandHandler
         private IUserSecretEncoder $encoder
     ) {}
 
-    public function __invoke(CreateUser $command) {
+    public function __invoke(CreateUser $command)
+    {
         $this->validateUserData($command->plainPassword(), $command->username(), $command->email());
         $this->userRepository->add(
             new User(
@@ -37,7 +38,7 @@ class CreateUserCommandHandler
     private function validateUserData(string $password, string $username, string $email): void
     {
         if ($this->usernameExists($username)) {
-            throw new AppRuntimeException("User with username {$username} not found.");
+            throw new AppRuntimeException("User with username {$username} already exists.");
         }
 
         if ($this->emailExists($email)) {

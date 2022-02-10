@@ -25,4 +25,9 @@ interface UserRepository
      * @throws EmptyQueryResultException
      */
     public function findOneByEmail(string $email): User;
+
+    /**
+     * @return User[]
+     */
+    public function findAll(): array;
 }
