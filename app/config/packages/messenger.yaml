@@ -14,3 +14,4 @@ framework:
              'App\Core\Component\UserManagement\Application\Write\Command\CreateUserCommand': sync
              'App\Core\Component\UserManagement\Application\Write\Command\CreateAdminCommand': sync
              'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUsersQuery': sync
+             'App\Core\Port\Transport\CommandBus\Command\CreateTagCommand': sync
