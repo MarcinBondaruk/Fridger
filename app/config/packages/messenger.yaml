@@ -15,3 +15,4 @@ framework:
              'App\Core\Component\UserManagement\Application\Write\Command\CreateAdminCommand': sync
              'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUsersQuery': sync
              'App\Core\Component\CookingBook\Application\Write\Command\CreateTagCommand\CreateTagCommand': sync
+             'App\Core\Component\CookingBook\Application\Write\Command\CreateIngredientCommand\CreateIngredientCommand': sync
