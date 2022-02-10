@@ -19,6 +19,24 @@ doctrine:
             User:
                 is_bundle: false
                 type: xml
-                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Mapping'
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/User'
                 prefix: 'App\Core\Component\UserManagement\Domain\Entity'
                 alias : User
+            Tag:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/Tag'
+                prefix: 'App\Core\Component\CookingBook\Domain\Entity\Tag'
+                alias: Tag
+            Ingredient:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/Ingredient'
+                prefix: 'App\Core\Component\CookingBook\Domain\Entity\Ingredient'
+                alias: Ingredient
+            Recipe:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/Recipe'
+                prefix: 'App\Core\Component\CookingBook\Domain\Entity'
+                alias: Recipe
