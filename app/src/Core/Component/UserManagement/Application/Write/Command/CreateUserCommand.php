@@ -5,7 +5,7 @@ namespace App\Core\Component\UserManagement\Application\Write\Command;
 
 use App\Core\Port\Transport\CommandBus\Command;
 
-class CreateUser implements Command
+class CreateUserCommand implements Command
 {
     public function __construct(
         private string $username,

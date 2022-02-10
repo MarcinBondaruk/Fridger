@@ -77,4 +77,9 @@ class User
     {
         $this->addRole(static::ROLE_USER);
     }
+
+    public function promoteToAdmin()
+    {
+        $this->addRole(static::ROLE_ADMIN);
+    }
 }

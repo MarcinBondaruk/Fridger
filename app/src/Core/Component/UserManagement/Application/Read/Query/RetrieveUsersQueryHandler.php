@@ -31,7 +31,8 @@ class RetrieveUsersQueryHandler
             return [
                 'id' => $user->id(),
                 'username' => $user->username(),
-                'email' => $user->email()
+                'email' => $user->email(),
+                'roles' => $user->roles()
             ];
         }, $users);
 

@@ -11,5 +11,6 @@ framework:
 
         routing:
             # Route your messages to the transports
-             'App\Core\Component\UserManagement\Application\Write\Command\CreateUser': sync
+             'App\Core\Component\UserManagement\Application\Write\Command\CreateUserCommand': sync
+             'App\Core\Component\UserManagement\Application\Write\Command\CreateAdminCommand': sync
              'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUsersQuery': sync

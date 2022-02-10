@@ -13,7 +13,7 @@ use App\Core\SharedKernel\Exception\AppRuntimeException;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class CreateUserCommandHandler
+class CreateAdminCommandHandler
 {
     public function __construct(
         private IdentityProvider $identityProvider,
@@ -22,17 +22,17 @@ class CreateUserCommandHandler
         private IUserSecretEncoder $encoder
     ) {}
 
-    public function __invoke(CreateUserCommand $command)
+    public function __invoke(CreateAdminCommand $command)
     {
         $this->validateUserData($command->plainPassword(), $command->username(), $command->email());
-        $this->userRepository->add(
-            new User(
-                $this->identityProvider->generate(),
-                $command->username(),
-                $command->email(),
-                $this->encoder->encode($command->plainPassword())
-            )
+        $newUser = new User(
+            $this->identityProvider->generate(),
+            $command->username(),
+            $command->email(),
+            $this->encoder->encode($command->plainPassword())
         );
+        $newUser->promoteToAdmin();
+        $this->userRepository->add($newUser);
     }
 
     private function validateUserData(string $password, string $username, string $email): void

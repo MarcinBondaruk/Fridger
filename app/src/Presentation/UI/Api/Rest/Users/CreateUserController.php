@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\UI\Api\Rest\Users;
 
-use App\Core\Component\UserManagement\Application\Write\Command\CreateUser;
+use App\Core\Component\UserManagement\Application\Write\Command\CreateUserCommand;
 use App\Core\Port\Transport\CommandBus\ISyncCommandBus;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,7 +21,7 @@ class CreateUserController extends AbstractController
         $body = json_decode($request->getContent(), true);
 
         $messageBus->dispatch(
-            new CreateUser(
+            new CreateUserCommand(
                 $body['username'],
                 $body['email'],
                 $body['password']
