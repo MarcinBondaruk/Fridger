@@ -25,7 +25,7 @@ class DoctrineUserRepository implements UserRepository
             ->findOneBy(['username' => $username]);
 
         if (empty($user)) {
-            throw new EmptyQueryResultException();
+            throw new EmptyQueryResultException("No user found matching username: {$username}.");
         }
 
         return $user;
@@ -37,7 +37,7 @@ class DoctrineUserRepository implements UserRepository
             ->findOneBy(['email' => $email]);
 
         if (empty($user)) {
-            throw new EmptyQueryResultException();
+            throw new EmptyQueryResultException("No user found matching email: {$email}.");
         }
 
         return $user;
