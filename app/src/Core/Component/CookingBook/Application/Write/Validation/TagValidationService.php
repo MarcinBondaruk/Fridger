@@ -11,7 +11,7 @@ class TagValidationService
     {
         Assertion::notEmpty($value);
         Assertion::maxLength($value, 30, 'Tag should not exceed 30 characters.');
-        Assertion::regex($value, '/^[A-Za-z ]+$/', 'Username must contain latin characters');
+        Assertion::regex($value, '/^[\s\p{L}]+$/u', 'Tag must contain latin characters');
         return $value;
     }
 }
