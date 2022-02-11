@@ -12,14 +12,6 @@ class AdminDashboardController extends AbstractController
     #[Route(path: '/admin', name: 'admin_dashboard', methods: ['GET'])]
     public function index(): Response
     {
-        return $this->render('homepage.html.twig', [
-            'a_variable' => 'test',
-            'navigation' => [
-                [
-                    'href' => 'auth/login',
-                    'caption' => 'login'
-                ]
-            ]
-        ]);
+        return $this->render('admin/dashboard.html.twig');
     }
 }
