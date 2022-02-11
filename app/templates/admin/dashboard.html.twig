@@ -1,7 +1,16 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
 <main role="main">
-    Admin Panel
+    <p>Admin Panel</p>
+    <div>
+        <form action="{{ path('addingredient') }}" method="get" class="form-signin">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add new ingredient</button>
+        </form>
+    </div>
 </main>
 {% endblock %}
