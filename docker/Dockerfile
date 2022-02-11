@@ -52,6 +52,8 @@ COPY --from=prod-dependencies /var/www/app/vendor /var/www/app/vendor
 
 #ccopy only whats neccesary
 COPY app/public /var/www/app/public
+COPY app/Migrations /var/www/app/Migrations
+COPY app/templates /var/www/app/templates
 COPY app/bin /var/www/app/bin
 COPY app/config /var/www/app/config
 COPY app/src /var/www/app/src

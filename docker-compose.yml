@@ -12,6 +12,7 @@ services:
       - '1805:80'
     volumes:
       - ./app/Migrations:/var/www/app/Migrations
+      - ./app/templates:/var/www/app/templates
       - ./app/src:/var/www/app/src
       - ./app/config:/var/www/app/config
       - ./app/vendor:/var/www/app/vendor
