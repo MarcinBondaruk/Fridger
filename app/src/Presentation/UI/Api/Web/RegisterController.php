@@ -29,6 +29,10 @@ class RegisterController extends AbstractController
                     $body['email'],
                     $body['password']
                 ));
+
+                return $this->render('account/user-account.html.twig', [
+                    'error' => $error
+                ]);
             } catch(AppRuntimeException | AssertionFailedException $e) {
                 $error = $e->getMessage();
                 return $this->render('auth/register.html.twig', [

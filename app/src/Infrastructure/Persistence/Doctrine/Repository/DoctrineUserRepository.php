@@ -47,4 +47,9 @@ class DoctrineUserRepository implements UserRepository
     {
         return $this->entityManager->getRepository(User::class)->findAll();
     }
+
+    public function findById(string $id): User
+    {
+        return $this->entityManager->getRepository(User::class)->find($id);
+    }
 }

@@ -30,4 +30,6 @@ interface UserRepository
      * @return User[]
      */
     public function findAll(): array;
+
+    public function findById(string $id): User;
 }
