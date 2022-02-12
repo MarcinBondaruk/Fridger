@@ -1,4 +1,4 @@
-# Fridger - find your recipes
+# Fridger - Lets cook together!
   
 ## Requirements
 Project was developed on:
