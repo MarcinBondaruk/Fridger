@@ -27,8 +27,8 @@ class CreateAdminCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $username = 'admin2';
-            $email = 'admin2@fridger.com';
+            $username = 'admin';
+            $email = 'admin@fridger.com';
             $output->writeln("Creating admin with username: {$username} and email {$email}");
             $this->commandBus->dispatch(new AppCreateAdminCommand(
                 $username,

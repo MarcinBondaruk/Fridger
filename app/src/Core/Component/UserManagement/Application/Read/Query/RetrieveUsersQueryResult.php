@@ -16,6 +16,11 @@ class RetrieveUsersQueryResult implements QueryResult
         return json_encode($this->data);
     }
 
+    public function toArray(): array
+    {
+        return $this->data;
+    }
+
     public static function fromArray(array $data): self
     {
         return new self($data);

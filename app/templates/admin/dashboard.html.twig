@@ -11,6 +11,12 @@
         <form action="{{ path('addingredient') }}" method="get" class="form-signin">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Add new ingredient</button>
         </form>
+        <form action="{{ path('available-ingredients') }}" method="get" class="form-signin">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Show available ingredients</button>
+        </form>
+        <form action="{{ path('show-users') }}" method="get" class="form-signin">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Show users</button>
+        </form>
     </div>
 </main>
 {% endblock %}
