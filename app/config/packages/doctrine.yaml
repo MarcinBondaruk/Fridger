@@ -40,3 +40,9 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/Recipe'
                 prefix: 'App\Core\Component\CookingBook\Domain\Entity'
                 alias: Recipe
+            RecipeIngredient:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Infrastructure/Persistence/Doctrine/Model/RecipeIngredient'
+                prefix: 'App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient'
+                alias: RecipeIngredient

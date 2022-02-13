@@ -7,5 +7,7 @@
         <id name="id" type="string" column="uuid"/>
         <field name="description" type="text" column="description"/>
         <field name="title" type="string" column="title"/>
+
+        <one-to-many field="recipeIngredients" target-entity="App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient" mapped-by="recipe"/>
     </entity>
 </doctrine-mapping>

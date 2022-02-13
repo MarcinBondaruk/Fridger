@@ -8,5 +8,7 @@
             <generator strategy="AUTO"/>
         </id>
         <field name="value" type="string" column="value"/>
+
+        <one-to-many field="recipeIngredients" target-entity="App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient" mapped-by="ingredient"/>
     </entity>
 </doctrine-mapping>

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookingBook\Domain\Entity;
 
-use App\Core\Component\CookingBook\Domain\Entity\Ingredient\Ingredient;
+use App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient;
 use App\Core\Component\CookingBook\Domain\Entity\Tag\Tag;
 
 class Recipe
@@ -12,15 +12,15 @@ class Recipe
      * @param string $id
      * @param string $title
      * @param string $description
-     * @param Ingredient[] $ingredients
+     * @param RecipeIngredient[] $recipeIngredients
      * @param Tag[] $tags
      */
     public function __construct(
         private string $id,
         private string $title,
         private string $description,
-        private array $ingredients,
-        private array $tags
+        private array $recipeIngredients,
+        private array $tags = []
     ) {}
 
     /**
@@ -56,10 +56,10 @@ class Recipe
     }
 
     /**
-     * @return Ingredient[]
+     * @return array
      */
-    public function ingredients(): array
+    public function recipeIngredients(): array
     {
-        return $this->ingredients;
+        return $this->recipeIngredients;
     }
 }
