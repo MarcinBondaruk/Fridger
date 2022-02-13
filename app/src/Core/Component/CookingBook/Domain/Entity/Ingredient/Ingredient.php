@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookingBook\Domain\Entity\Ingredient;
 
-use App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient;
+use Doctrine\ORM\PersistentCollection;
 
 class Ingredient
 {
     private int $id;
 
     /**
-     * @var RecipeIngredient[]
+     * @var PersistentCollection
      */
-    private array $recipeIngredients;
+    private PersistentCollection $recipeIngredients;
 
     public function __construct(
         private string $value
@@ -35,9 +35,9 @@ class Ingredient
     }
 
     /**
-     * @return RecipeIngredient[]
+     * @return PersistentCollection
      */
-    public function recipeIngredients(): array
+    public function recipeIngredients(): PersistentCollection
     {
         return $this->recipeIngredients;
     }

@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookingBook\Domain\Entity;
 
-use App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient;
 use App\Core\Component\CookingBook\Domain\Entity\Tag\Tag;
+use Doctrine\ORM\PersistentCollection;
 
 class Recipe
 {
@@ -12,14 +12,14 @@ class Recipe
      * @param string $id
      * @param string $title
      * @param string $description
-     * @param RecipeIngredient[] $recipeIngredients
+     * @param PersistentCollection $recipeIngredients
      * @param Tag[] $tags
      */
     public function __construct(
         private string $id,
         private string $title,
         private string $description,
-        private array $recipeIngredients,
+        private PersistentCollection $recipeIngredients,
         private array $tags = []
     ) {}
 
@@ -56,9 +56,9 @@ class Recipe
     }
 
     /**
-     * @return array
+     * @return PersistentCollection
      */
-    public function recipeIngredients(): array
+    public function recipeIngredients(): PersistentCollection
     {
         return $this->recipeIngredients;
     }
