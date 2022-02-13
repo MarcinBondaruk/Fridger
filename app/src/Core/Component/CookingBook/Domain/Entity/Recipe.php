@@ -3,25 +3,32 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookingBook\Domain\Entity;
 
+use App\Core\Component\CookingBook\Domain\Entity\Ingredient\Ingredient;
+use App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient;
 use App\Core\Component\CookingBook\Domain\Entity\Tag\Tag;
-use Doctrine\ORM\PersistentCollection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 class Recipe
 {
+    private Collection $recipeIngredients;
+
     /**
      * @param string $id
      * @param string $title
      * @param string $description
-     * @param PersistentCollection $recipeIngredients
+     * @param array $ingredients
      * @param Tag[] $tags
      */
     public function __construct(
         private string $id,
         private string $title,
         private string $description,
-        private PersistentCollection $recipeIngredients,
+        private array $ingredients,
         private array $tags = []
-    ) {}
+    ) {
+        $this->recipeIngredients = new ArrayCollection([]);
+    }
 
     /**
      * @return string
@@ -56,10 +63,32 @@ class Recipe
     }
 
     /**
-     * @return PersistentCollection
+     * @return Collection
      */
-    public function recipeIngredients(): PersistentCollection
+    public function recipeIngredients(): Collection
     {
         return $this->recipeIngredients;
+    }
+
+    /**
+     * @param Collection $recipeIngredients
+     */
+    public function setRecipeIngredients(Collection $recipeIngredients): void
+    {
+        $this->recipeIngredients = $recipeIngredients;
+    }
+
+    public function addRecipeIngredient(RecipeIngredient $recipeIngredient): void
+    {
+        $this->recipeIngredients->add($recipeIngredient);
+        $recipeIngredient->setRecipe($this);
+    }
+
+    /**
+     * @return Ingredient[]
+     */
+    public function ingredients(): array
+    {
+        return $this->ingredients;
     }
 }

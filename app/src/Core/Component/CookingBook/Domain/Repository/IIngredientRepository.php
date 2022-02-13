@@ -21,4 +21,10 @@ interface IIngredientRepository
      * @return Ingredient[]
      */
     public function findAll(): array;
+
+    /**
+     * @param int[] $ingredientIds
+     * @return Ingredient[]
+     */
+    public function findManyByIds(array $ingredientIds): array;
 }

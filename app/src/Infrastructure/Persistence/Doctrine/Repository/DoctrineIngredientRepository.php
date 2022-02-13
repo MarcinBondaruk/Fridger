@@ -35,4 +35,14 @@ class DoctrineIngredientRepository implements IIngredientRepository
 
         return $result;
     }
+
+    /**
+     * @param int[] $ingredientIds
+     * @return Ingredient[]
+     */
+    public function findManyByIds(array $ingredientIds): array
+    {
+        return $this->entityManager->getRepository(Ingredient::class)
+            ->findBy(['id' => $ingredientIds]);
+    }
 }

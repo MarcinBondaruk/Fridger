@@ -12,22 +12,22 @@ class RecipeIngredient
     private Ingredient $ingredient;
 
     public function __construct(
-        private string $ingredientId,
+        private int $ingredientId,
         private string $recipeId
     ) {}
 
     /**
-     * @return string
+     * @return int
      */
-    public function ingredientId(): string
+    public function ingredientId(): int
     {
         return $this->ingredientId;
     }
 
     /**
-     * @param string $ingredientId
+     * @param int $ingredientId
      */
-    public function setIngredientId(string $ingredientId): void
+    public function setIngredientId(int $ingredientId): void
     {
         $this->ingredientId = $ingredientId;
     }

@@ -18,4 +18,5 @@ framework:
              'App\Core\Component\UserManagement\Application\Read\Query\RetrieveUserDataQuery\RetrieveUserDataQuery': query
              'App\Core\Component\CookingBook\Application\Write\Command\CreateTagCommand\CreateTagCommand': command
              'App\Core\Component\CookingBook\Application\Write\Command\CreateIngredientCommand\CreateIngredientCommand': command
+             'App\Core\Component\CookingBook\Application\Write\Command\CreateRecipeCommand\CreateRecipeCommand': command
              'App\Core\Component\CookingBook\Application\Read\Query\RetrieveIngredientsQuery\RetrieveIngredientsQuery': query
