@@ -8,19 +8,10 @@ use App\Core\Port\Transport\CommandBus\Command;
 class CreateRecipeCommand implements Command
 {
     public function __construct(
-        private string $id,
         private string $title,
         private string $description,
         private array $ingredientIds
     ) {}
-
-    /**
-     * @return string
-     */
-    public function id(): string
-    {
-        return $this->id;
-    }
 
     /**
      * @return string

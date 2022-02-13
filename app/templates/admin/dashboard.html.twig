@@ -8,7 +8,7 @@
 <main role="main">
     <p>Admin Panel</p>
     <div>
-        <form action="{{ path('addingredient') }}" method="get" class="form-signin">
+        <form action="{{ path('add-ingredient') }}" method="get" class="form-signin">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Add new ingredient</button>
         </form>
         <form action="{{ path('available-ingredients') }}" method="get" class="form-signin">
@@ -16,6 +16,9 @@
         </form>
         <form action="{{ path('show-users') }}" method="get" class="form-signin">
             <button class="btn btn-lg btn-primary btn-block" type="submit">Show users</button>
+        </form>
+        <form action="{{ path('add-recipe') }}" method="get" class="form-signin">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Add new recipe</button>
         </form>
     </div>
 </main>

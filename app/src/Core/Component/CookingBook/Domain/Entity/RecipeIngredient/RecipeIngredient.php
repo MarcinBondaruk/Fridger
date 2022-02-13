@@ -13,7 +13,8 @@ class RecipeIngredient
 
     public function __construct(
         private int $ingredientId,
-        private string $recipeId
+        private string $recipeId,
+        private int $amount = 100
     ) {}
 
     /**
@@ -78,5 +79,13 @@ class RecipeIngredient
     public function setIngredient(Ingredient $ingredient): void
     {
         $this->ingredient = $ingredient;
+    }
+
+    /**
+     * @return int
+     */
+    public function amount(): int
+    {
+        return $this->amount;
     }
 }

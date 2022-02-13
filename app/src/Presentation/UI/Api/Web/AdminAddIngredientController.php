@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminAddIngredientController extends AbstractController
 {
-    #[Route(path: '/admin/addingredient', name: 'addingredient', methods: ['GET', 'POST'])]
+    #[Route(path: '/admin/add-ingredient', name: 'add-ingredient', methods: ['GET', 'POST'])]
     public function index(
         ISyncCommandBus $commandBus,
         Request $request

@@ -6,12 +6,13 @@
     <entity name="App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient" table="recipe_ingredient">
         <id name="recipeId" type="string" column="recipe_id"/>
         <id name="ingredientId" type="integer" column="ingredient_id"/>
+        <field name="amount" type="integer" column="amount"/>
 
         <many-to-one field="recipe" target-entity="App\Core\Component\CookingBook\Domain\Entity\Recipe" inversed-by="recipeIngredients">
-            <join_column name="recipe_id" referenced-column-name="uuid"/>
+            <join-column name="recipe_id" referenced-column-name="uuid"/>
         </many-to-one>
         <many-to-one field="ingredient" target-entity="App\Core\Component\CookingBook\Domain\Entity\Ingredient\Ingredient" inversed-by="recipeIngredients">
-            <join_column name="ingredient_id" referenced-column-name="id"/>
+            <join-column name="ingredient_id" referenced-column-name="id"/>
         </many-to-one>
     </entity>
 </doctrine-mapping>
