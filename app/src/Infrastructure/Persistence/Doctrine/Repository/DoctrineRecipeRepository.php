@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Persistence\Doctrine\Repository;
 
-use App\Core\Component\CookingBook\Domain\Entity\Recipe;
+use App\Core\Component\CookingBook\Domain\Aggregate\Recipe;
 use App\Core\Component\CookingBook\Domain\Entity\RecipeIngredient\RecipeIngredient;
 use App\Core\Component\CookingBook\Domain\Repository\IRecipeRepository;
 use Doctrine\ORM\EntityManagerInterface;

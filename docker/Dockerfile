@@ -1,4 +1,4 @@
-FROM php:8.0.14-fpm-alpine3.15 as base
+FROM php:8.1-fpm-alpine3.15 as base
 
 RUN mv /var/www/html /var/www/app
 WORKDIR /var/www/app
@@ -12,7 +12,7 @@ ENV S6_BEHAVIOUR_IF_STAGE2_FAILS=2;
 ENV S6_SYNC_DISKS=1;
 
 RUN apk update && \
-    apk add nginx=1.20.2-r0 && \
+    apk add nginx=1.20.2-r1 && \
     apk add postgresql-dev && \
     docker-php-ext-install pdo_pgsql;
 
@@ -26,14 +26,20 @@ COPY app/composer.lock app/composer.json /var/www/app/
 FROM composer-base as prod-dependencies
 RUN php composer.phar install --working-dir=/var/www/app --no-dev --prefer-dist --no-scripts --no-progress --optimize-autoloader
 
+###############################################################################
+#                               Local Stage
+###############################################################################
 FROM base as local
 ENV APP_ENV dev
 
 RUN set -eux; \
     mkdir /var/www/app/var;
 
+# enable composer for global context
+COPY --from=composer-base /var/www/app/composer.phar /usr/bin/composer
+RUN chmod +x /usr/bin/composer;
+
 # copy startup scripts
-COPY --from=composer-base /var/www/app/composer.phar /var/www/app
 COPY docker/s6-overlay/local/etc /etc
 COPY docker/php/local/symfony.ini $PHP_INI_DIR/conf.d/symfony.ini
 
@@ -42,6 +48,9 @@ COPY ./app /var/www/app
 
 ENTRYPOINT ["/init"]
 
+###############################################################################
+#                               Production Stage
+###############################################################################
 FROM base as prod
 ENV APP_ENV prod
 # copy startup scripts
@@ -50,10 +59,10 @@ COPY docker/nginx/production/servis.conf /etc/nginx/http.d
 
 COPY --from=prod-dependencies /var/www/app/vendor /var/www/app/vendor
 
-#ccopy only whats neccesary
+#copy only whats neccesary
 COPY app/public /var/www/app/public
 COPY app/Migrations /var/www/app/Migrations
-COPY app/templates /var/www/app/templates
+COPY app/templates /var/www/app/templatescompo
 COPY app/bin /var/www/app/bin
 COPY app/config /var/www/app/config
 COPY app/src /var/www/app/src

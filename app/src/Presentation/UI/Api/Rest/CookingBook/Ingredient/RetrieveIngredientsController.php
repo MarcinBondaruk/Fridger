@@ -14,7 +14,7 @@ class RetrieveIngredientsController extends AbstractController
 {
 
     #[Route('/api/v1/ingredients', methods: ['GET'])]
-    public function retrieveUsers(
+    public function retrieveIngredients(
         ISyncQueryBus $queryBus,
     ): Response {
         $result = $queryBus->dispatch(new RetrieveIngredientsQuery());
