@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookBook\Domain\Aggregate;
 
+use App\Core\Component\CookBook\Domain\ValueObject\RecipeDescription;
 use App\Core\Component\CookBook\Domain\ValueObject\RecipeId;
 use App\Core\Component\CookBook\Domain\ValueObject\RecipeName;
 
