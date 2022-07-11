@@ -6,7 +6,7 @@ namespace App\Core\Component\CookBook\Domain\ValueObject;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 
-class RecipeName
+final class RecipeName
 {
     const MIN_LENGTH = 6;
     const MAX_LENGTH = 120;
@@ -17,7 +17,7 @@ class RecipeName
      */
     private function __construct(public readonly string $value)
     {
-        Assertion::betweenLength($value, static::MIN_LENGTH, static::MAX_LENGTH);
+        Assertion::betweenLength($value, self::MIN_LENGTH, self::MAX_LENGTH);
     }
 
     /**

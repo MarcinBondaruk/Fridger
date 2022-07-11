@@ -37,6 +37,28 @@ class RecipeIdTest extends TestCase
         $recipeId = RecipeId::create($input);
     }
 
+    public function testIsEqualShouldReturnTrue(): void
+    {
+        // GIVEN
+        $uuid = (string) Uuid::uuid4();
+        $recipeId = RecipeId::create($uuid);
+
+        // THEN
+        $this->assertTrue($recipeId->isEqual(RecipeId::create($uuid)));
+    }
+
+    public function testIsEqualShouldReturnFalse(): void
+    {
+        // GIVEN
+        $uuid = (string) Uuid::uuid4();
+        $anotherId = (string) Uuid::uuid4();
+
+        $recipeId = RecipeId::create($uuid);
+
+        // THEN
+        $this->assertFalse($recipeId->isEqual(RecipeId::create($anotherId)));
+    }
+
     public function invalidInputProvider(): array
     {
         return [

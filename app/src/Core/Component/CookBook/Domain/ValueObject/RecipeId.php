@@ -6,7 +6,7 @@ namespace App\Core\Component\CookBook\Domain\ValueObject;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 
-class RecipeId
+final class RecipeId
 {
     public readonly string $value;
 
