@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Tests\unit\Core\Component\CookBook\Domain\ValueObject;
+namespace App\Tests\unit\Core\SharedKernel\Domain\ValueObject;
 
-use App\Core\Component\CookBook\Domain\ValueObject\RecipeId;
+use App\Core\SharedKernel\Domain\ValueObject\ProductId;
 use Assert\AssertionFailedException;
 use PHPUnit\Framework\TestCase;
 use Ramsey\Uuid\Uuid;
 
-class RecipeIdTest extends TestCase
+class ProductIdTest extends TestCase
 {
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
     }
@@ -21,10 +21,10 @@ class RecipeIdTest extends TestCase
         $uuid = (string) Uuid::uuid4();
 
         // WHEN
-        $recipeId = RecipeId::create($uuid);
+        $productId = ProductId::create($uuid);
 
         // THEN
-        $this->assertEquals($uuid, $recipeId->value);
+        $this->assertEquals($uuid, $productId->value);
     }
 
     /**
@@ -35,17 +35,17 @@ class RecipeIdTest extends TestCase
     public function testCreateRecipeIdShouldThrowAnException(mixed $input): void
     {
         $this->expectException(AssertionFailedException::class);
-        $recipeId = RecipeId::create($input);
+        $productId = ProductId::create($input);
     }
 
     public function testIsEqualShouldReturnTrue(): void
     {
         // GIVEN
         $uuid = (string) Uuid::uuid4();
-        $recipeId = RecipeId::create($uuid);
+        $productId = ProductId::create($uuid);
 
         // THEN
-        $this->assertTrue($recipeId->isEqual(RecipeId::create($uuid)));
+        $this->assertTrue($productId->isEqual(ProductId::create($uuid)));
     }
 
     public function testIsEqualShouldReturnFalse(): void
@@ -54,10 +54,10 @@ class RecipeIdTest extends TestCase
         $uuid = (string) Uuid::uuid4();
         $anotherId = (string) Uuid::uuid4();
 
-        $recipeId = RecipeId::create($uuid);
+        $productId = ProductId::create($uuid);
 
         // THEN
-        $this->assertFalse($recipeId->isEqual(RecipeId::create($anotherId)));
+        $this->assertFalse($productId->isEqual(ProductId::create($anotherId)));
     }
 
     public function invalidInputProvider(): array
