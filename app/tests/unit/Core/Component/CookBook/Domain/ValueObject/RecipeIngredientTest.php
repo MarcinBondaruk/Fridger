@@ -18,13 +18,13 @@ final class RecipeIngredientTest extends TestCase
 
     public function testCreateRecipeIngredient(): void
     {
-        $ingredientId = (string) Uuid::uuid4();
+        $productId = (string) Uuid::uuid4();
         $unit = RecipeIngredientUnit::GRAM;
         $amount = 100;
 
-        $recipeIngredient = RecipeIngredient::create($ingredientId, $unit, $amount);
+        $recipeIngredient = RecipeIngredient::create($productId, $unit, $amount);
 
-        $this->assertEquals($ingredientId, $recipeIngredient->ingredientId);
+        $this->assertEquals($productId, $recipeIngredient->ingredientId);
         $this->assertEquals($unit, $recipeIngredient->unit);
         $this->assertEquals($amount, $recipeIngredient->amount);
     }
@@ -37,11 +37,11 @@ final class RecipeIngredientTest extends TestCase
      */
     public function testCreateShouldThrowExceptionWhenAmountIsInvalid($input): void
     {
-        $ingredientId = (string) Uuid::uuid4();
+        $productId = (string) Uuid::uuid4();
         $unit = RecipeIngredientUnit::GRAM;
 
         $this->expectException(AssertionFailedException::class);
-        $recipeIngredient = RecipeIngredient::create($ingredientId, $unit, $input);
+        $recipeIngredient = RecipeIngredient::create($productId, $unit, $input);
     }
 
     public function invalidAmountProvider(): array

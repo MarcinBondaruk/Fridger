@@ -14,33 +14,33 @@ final class RecipeIngredient
     public readonly int $amount;
 
     /**
-     * @param string $ingredientId
+     * @param string $productId
      * @param RecipeIngredientUnit $unit
      * @param int $amount
      * @throws AssertionFailedException
      */
     public function __construct(
-        string $ingredientId,
+        string $productId,
         RecipeIngredientUnit $unit,
         int $amount
     ) {
-        Assertion::uuid($ingredientId);
+        Assertion::uuid($productId);
         Assertion::greaterThan($amount, 0);
 
-        $this->ingredientId = $ingredientId;
+        $this->ingredientId = $productId;
         $this->unit = $unit;
         $this->amount = $amount;
     }
 
     /**
-     * @param string $ingredientId
+     * @param string $productId
      * @param RecipeIngredientUnit $unit
      * @param int $amount
      * @return static
      * @throws AssertionFailedException
      */
-    public static function create(string $ingredientId, RecipeIngredientUnit $unit, int $amount): self
+    public static function create(string $productId, RecipeIngredientUnit $unit, int $amount): self
     {
-        return new self($ingredientId, $unit, $amount);
+        return new self($productId, $unit, $amount);
     }
 }
