@@ -10,8 +10,9 @@ use App\Core\SharedKernel\Domain\ValueObject\ProductId;
 final class Product
 {
     public function __construct(
-        ProductId $productId,
-        ProductName $productName,
-        Unit $unit
-    ) {}
+        private readonly ProductId $productId,
+        private ProductName $productName,
+        private readonly Unit $unit
+    ) {
+    }
 }
