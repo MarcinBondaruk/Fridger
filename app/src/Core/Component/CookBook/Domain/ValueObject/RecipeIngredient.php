@@ -3,26 +3,26 @@ declare(strict_types=1);
 
 namespace App\Core\Component\CookBook\Domain\ValueObject;
 
-use App\Core\Component\CookBook\Domain\Enum\RecipeIngredientUnit;
+use App\Core\SharedKernel\Domain\Enum\Unit;
 use Assert\Assertion;
 use Assert\AssertionFailedException;
 
 final class RecipeIngredient
 {
     public readonly string  $ingredientId;
-    public readonly RecipeIngredientUnit $unit;
+    public readonly Unit $unit;
     public readonly int $amount;
 
     /**
      * @param string $productId
-     * @param RecipeIngredientUnit $unit
+     * @param Unit $unit
      * @param int $amount
      * @throws AssertionFailedException
      */
     public function __construct(
         string $productId,
-        RecipeIngredientUnit $unit,
-        int $amount
+        Unit   $unit,
+        int    $amount
     ) {
         Assertion::uuid($productId);
         Assertion::greaterThan($amount, 0);
@@ -34,12 +34,12 @@ final class RecipeIngredient
 
     /**
      * @param string $productId
-     * @param RecipeIngredientUnit $unit
+     * @param Unit $unit
      * @param int $amount
      * @return static
      * @throws AssertionFailedException
      */
-    public static function create(string $productId, RecipeIngredientUnit $unit, int $amount): self
+    public static function create(string $productId, Unit $unit, int $amount): self
     {
         return new self($productId, $unit, $amount);
     }

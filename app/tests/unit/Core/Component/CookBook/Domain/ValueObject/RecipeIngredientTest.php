@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Tests\unit\Core\Component\CookBook\Domain\ValueObject;
 
-use App\Core\Component\CookBook\Domain\Enum\RecipeIngredientUnit;
+use App\Core\SharedKernel\Domain\Enum\Unit;
 use App\Core\Component\CookBook\Domain\ValueObject\RecipeIngredient;
 use Assert\AssertionFailedException;
 use PHPUnit\Framework\TestCase;
@@ -19,7 +19,7 @@ final class RecipeIngredientTest extends TestCase
     public function testCreateRecipeIngredient(): void
     {
         $productId = (string) Uuid::uuid4();
-        $unit = RecipeIngredientUnit::GRAM;
+        $unit = Unit::GRAM;
         $amount = 100;
 
         $recipeIngredient = RecipeIngredient::create($productId, $unit, $amount);
@@ -38,7 +38,7 @@ final class RecipeIngredientTest extends TestCase
     public function testCreateShouldThrowExceptionWhenAmountIsInvalid($input): void
     {
         $productId = (string) Uuid::uuid4();
-        $unit = RecipeIngredientUnit::GRAM;
+        $unit = Unit::GRAM;
 
         $this->expectException(AssertionFailedException::class);
         $recipeIngredient = RecipeIngredient::create($productId, $unit, $input);
